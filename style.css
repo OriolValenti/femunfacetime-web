@@ -61,7 +61,7 @@
   --r-xl:   32px;
   --r-pill: 100px;
 
-  --max-w:   740px;
+  --max-w:   820px;
   --gap:     clamp(1.25rem, 4vw, 2.5rem);
 
   --font:    'Figtree', system-ui, -apple-system, sans-serif;
@@ -1539,3 +1539,19 @@ html, body {
 /* No decorative dashes */
 .hero__eyebrow::before, .section-label::before { display: none; content: none; }
 .hero__eyebrow, .section-label { gap: 0; }
+
+/* ── Clickable episode cards ─────────────────────────── */
+.ep-card { position: relative; cursor: pointer; }
+.ep-card__link { color: inherit; text-decoration: none; }
+.ep-card__link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.ep-card:hover .ep-card__title { color: var(--green-text); }
+.ep-card:focus-within { outline: 2.5px solid var(--green-btn); outline-offset: 3px; }
+.ep-card__link:focus-visible { outline: none; }
+.ep-card .ep-card__tags { margin-bottom: 0; }
+
+/* ── Hero: wider text, bigger cover aligned to the top ── */
+@media (min-width: 641px) {
+  .hero__inner { grid-template-columns: minmax(0, 1fr) 240px; gap: 2.5rem; align-items: start; }
+  .hero__cover-wrap { width: 240px; }
+  .hero__title { white-space: nowrap; }
+}

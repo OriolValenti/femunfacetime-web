@@ -87,10 +87,9 @@
     el.innerHTML = eps.map(function (ep) {
       return '<li class="ep-item"><div class="ep-item__num" aria-hidden="true"><span>Ep</span>' + s(ep.num) + '</div>' +
         '<article class="ep-card" aria-labelledby="ep-' + s(ep.num) + '">' +
-        '<div class="ep-card__body"><h3 class="ep-card__title" id="ep-' + s(ep.num) + '">' + s(ep.title) + '</h3>' +
+        '<div class="ep-card__body"><h3 class="ep-card__title" id="ep-' + s(ep.num) + '"><a class="ep-card__link" href="' + s(ep.link) + '" target="_blank" rel="noopener noreferrer">' + s(ep.title) + '</a></h3>' +
         '<p class="ep-card__meta">' + meta(ep) + '</p>' +
-        '<p class="ep-card__desc">' + s(ep.desc) + '</p>' +
-        '<div class="ep-card__actions"><a href="' + s(ep.link) + '" class="btn btn--secondary btn--sm" target="_blank" rel="noopener noreferrer">' + PLAY + ' Escolta</a></div></div></article></li>';
+        '<p class="ep-card__desc">' + s(ep.desc) + '</p></div></article></li>';
     }).join("");
   }
 
@@ -101,13 +100,13 @@
     if (!list && !latest) return;
 
     // Episodis que ja hi ha escrits a l'HTML
-    var current = list ? list.children.length
+    var current = list ? list.children.length + 1
       : parseInt((latest.querySelector(".latest-card__ep") || {}).textContent.replace(/\D/g, ""), 10) || 0;
 
     fromFeed().catch(fromItunes).then(function (eps) {
       if (eps.length <= current) return;           // res de nou: no toquem res
       if (latest) renderLatest(eps[0], latest);
-      if (list) renderList(eps, list);
+      if (list) renderList(eps.slice(1), list);
       if (count) count.textContent = eps.length;
     }).catch(function () { /* ens quedem amb l'HTML estàtic */ });
   }
