@@ -1676,3 +1676,15 @@ body {
   .tilt__pip { right: -8px; bottom: -12px; border-width: 3px; width: 22%; }
 }
 @media (prefers-reduced-motion: reduce) { .tilt__card { transition: none; } }
+
+/* ── Wide hero: text and call side by side on large screens ── */
+@media (min-width: 1024px) {
+  .hero > .container, .nav > .container { max-width: calc(980px + 2 * var(--gap)); }
+  .hero__inner {
+    grid-template-columns: minmax(0, 430px) minmax(0, 1fr);
+    gap: clamp(2.5rem, 4vw, 4rem);
+    align-items: center;
+  }
+  .hero__title { white-space: nowrap; }
+  .hero__cover { order: 0; }
+}
