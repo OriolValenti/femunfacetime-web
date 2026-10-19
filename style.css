@@ -1581,3 +1581,8 @@ html, body {
 .nav__cta { justify-self: end; gap: .375rem; padding: .5rem .9rem; font-size: .8125rem; }
 .ep-card { padding: 1.125rem 1.375rem; }
 .ep-card__body > :last-child { margin-bottom: 0; }
+
+.hosts__intro p + p { margin-top: .875rem; }
+.hosts__intro { color: var(--text-2); line-height: 1.7; }
+.host { justify-content: flex-start; }
+.host__role { font-size: .875rem; line-height: 1.45; color: var(--text-muted); margin-top: -.25rem; }
