@@ -1423,3 +1423,6 @@ html, body {
 
 .host__name a { color: inherit; text-decoration: underline; text-decoration-color: var(--border-2); text-underline-offset: 3px; }
 .host__name a:hover { color: var(--green-text); text-decoration-color: currentColor; }
+
+.host__photo { width: 120px; height: 120px; box-shadow: 0 0 0 4px var(--surface), 0 0 0 5.5px var(--border-2); }
+.host__photo picture { display: block; width: 100%; height: 100%; }
