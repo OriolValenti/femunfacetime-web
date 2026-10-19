@@ -1687,3 +1687,33 @@ html, body {
   .episode__also a { background: var(--surface-3); }
   .episode__also a:hover { border-color: rgba(255,255,255,.24); background: var(--surface-3); }
 }
+
+/* =============================================
+   RADIUS SYSTEM — matched to the official Apple badge
+   (its corners can't be changed, so everything follows it)
+   control  8px  buttons, badge, links, tags, players
+   inner    6px  tiles inside a control
+   card    16px  cards and containers
+   avatars and the cover art keep their own shape
+   ============================================= */
+:root { --r-control: 8px; --r-inner: 6px; --r-card: 16px; }
+
+/* controls */
+.btn, .nav__cta, .listen-btn, .listen-badge, .listen-badge img,
+.episode__also a, .tag, .nav__links a, .nav__mobile a, .nav__mobile .btn,
+.skip-link, .nav__hamburger, .player, .player iframe, .audio, .audio audio {
+  border-radius: var(--r-control);
+}
+.audio audio::-webkit-media-controls-panel { border-radius: var(--r-control); }
+.audio { overflow: hidden; }
+
+/* tiles inside controls */
+.listen-btn__icon, .listen .listen-btn__icon { border-radius: var(--r-inner); }
+
+/* cards and containers */
+.latest-card, .ep-card, .host, .about .host, .episode__player,
+.ep-nav__item, .curated-card, .support-tier, .newsletter, .ask-box {
+  border-radius: var(--r-card);
+}
+.ep-card__link::after { border-radius: var(--r-card); }
+.ep-card:focus-within { outline-offset: 3px; }
