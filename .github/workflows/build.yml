@@ -1,0 +1,39 @@
+name: Build episodes
+
+# Regenerates the episode list, one page per episode and the sitemap from the
+# podcast RSS feed, then commits the result. Cloudflare deploys every commit.
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 6 * * *"   # every day at ~08:17 Barcelona time
+  workflow_dispatch:        # "Run workflow" button in GitHub → Actions
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-episodes
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Build from RSS
+        run: node scripts/build.mjs
+      - name: Commit changes
+        run: |
+          git add -A index.html sitemap.xml episodis
+          if git diff --cached --quiet; then
+            echo "No new episodes."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Episodis actualitzats des del feed"
+            git push
+          fi
