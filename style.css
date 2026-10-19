@@ -134,7 +134,9 @@ ol {
   justify-self: start;
 }
 .nav__inner > nav {
-  justify-self: center;
+  grid-column: 3;
+  justify-self: end;
+  margin-right: -0.875rem; /* text del darrer enllaç alineat amb el marge */
 }
 .nav__hamburger {
   justify-self: end;
