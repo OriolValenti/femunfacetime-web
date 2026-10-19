@@ -1683,10 +1683,10 @@ body {
 @media (min-width: 1024px) {
   :root { --max-w: calc(980px + 2 * var(--gap)); }
   .hero__inner {
-    grid-template-columns: minmax(0, 430px) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
     gap: clamp(2.5rem, 4vw, 4rem);
     align-items: center;
   }
-  .hero__title { white-space: nowrap; }
+  .hero__title { white-space: nowrap; font-size: clamp(2.25rem, 4.1vw, 2.75rem); }
   .hero__cover { order: 0; }
 }
