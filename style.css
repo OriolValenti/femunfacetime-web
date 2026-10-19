@@ -1717,3 +1717,10 @@ html, body {
 }
 .ep-card__link::after { border-radius: var(--r-card); }
 .ep-card:focus-within { outline-offset: 3px; }
+
+/* Spotify button: official logo, no tinted tile */
+.listen-btn--spotify .listen-btn__icon,
+.listen .listen-btn--spotify .listen-btn__icon { background: none; width: 32px; height: 32px; }
+@media (prefers-color-scheme: dark) {
+  .listen-btn--spotify .listen-btn__icon { background: none; }
+}
