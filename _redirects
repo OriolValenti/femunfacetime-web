@@ -1,3 +1,10 @@
+# Old Netlify address and www → main domain (one canonical host for Google)
+https://femunfacetime.netlify.app/*      https://femunfacetime.com/:splat  301!
+http://femunfacetime.netlify.app/*       https://femunfacetime.com/:splat  301!
+https://www.femunfacetime.com/*          https://femunfacetime.com/:splat  301!
+http://www.femunfacetime.com/*           https://femunfacetime.com/:splat  301!
+
+# Old pages from the multi-page version
 /episodes       /#episodis  301
 /episodes.html  /#episodis  301
 /about          /#qui-som   301
