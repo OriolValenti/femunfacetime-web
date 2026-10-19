@@ -46,6 +46,7 @@
           <li><a href="#qui-som">Qui som</a></li>
         </ul>
       </nav>
+      <a href="#ultim" class="nav__cta btn btn--primary btn--sm"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 4.5l14 7.5-14 7.5V4.5z" fill="currentColor"/></svg> Escolta</a>
       <button class="nav__hamburger" aria-label="Obre el menú de navegació" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -54,6 +55,7 @@
 <nav class="nav__mobile" id="mobile-nav" aria-label="Navegació mòbil">
   <a href="#episodis">Episodis</a>
   <a href="#qui-som">Qui som</a>
+  <a href="#ultim">Escolta l'últim episodi</a>
 </nav>
 
 <main id="main-content">
@@ -87,7 +89,7 @@
     </div>
   </section>
 
-  <section class="section" aria-labelledby="latest-label">
+  <section class="section" id="ultim" aria-labelledby="latest-label">
     <div class="container">
       <h2 class="section-label" id="latest-label">Últim episodi</h2>
       <div data-latest-episode>
@@ -117,7 +119,6 @@
               <h3 class="ep-card__title" id="ep-04"><a class="ep-card__link" href="https://podcasts.apple.com/es/podcast/trucada-del-17-de-juliol-de-2026-quan-la/id1883933507?i=1000777766390" target="_blank" rel="noopener noreferrer">Quan la connectivitat no connecta</a></h3>
               <p class="ep-card__meta"><span>Trucada del 17 de juliol de 2026</span><span class="ep-card__sep">·</span><span>43 min</span></p>
               <p class="ep-card__desc">Electrodomèstics connectats i per què la gamma mitjana guanya, la Digital Markets Act i Siri, i l&#x27;experiència de preparar una cursa amb un AI coach.</p>
-              <div class="ep-card__tags"><span class="tag">Smart home</span><span class="tag">DMA</span><span class="tag">IA</span></div>
             </div>
           </article>
         </li>
@@ -128,7 +129,6 @@
               <h3 class="ep-card__title" id="ep-03"><a class="ep-card__link" href="https://podcasts.apple.com/es/podcast/trucada-del-22-de-maig-de-2026-la-ia-tamb%C3%A9-vol-ser-artista/id1883933507?i=1000769453758" target="_blank" rel="noopener noreferrer">La IA també vol ser artista</a></h3>
               <p class="ep-card__meta"><span>Trucada del 22 de maig de 2026</span><span class="ep-card__sep">·</span><span>40 min</span></p>
               <p class="ep-card__desc">Assegurances de la llar i sistemes ineficients, la IA aplicada a la música i l&#x27;art amb els seus límits ètics, i el futur de les apps i les interfícies.</p>
-              <div class="ep-card__tags"><span class="tag">IA</span><span class="tag">Creativitat</span><span class="tag">Apps</span></div>
             </div>
           </article>
         </li>
@@ -139,7 +139,6 @@
               <h3 class="ep-card__title" id="ep-02"><a class="ep-card__link" href="https://podcasts.apple.com/es/podcast/trucada-de-l1-de-maig-de-2026-treballar-per-viure/id1883933507?i=1000766255453" target="_blank" rel="noopener noreferrer">Treballar per viure o viure per treballar?</a></h3>
               <p class="ep-card__meta"><span>Trucada de l&#x27;1 de maig de 2026</span><span class="ep-card__sep">·</span><span>39 min</span></p>
               <p class="ep-card__desc">Una app per agregar les despeses de la llar, mudances i nostàlgia, i una reflexió sobre feina, oci i felicitat.</p>
-              <div class="ep-card__tags"><span class="tag">Apps</span><span class="tag">Feina</span><span class="tag">Vida</span></div>
             </div>
           </article>
         </li>
@@ -150,7 +149,6 @@
               <h3 class="ep-card__title" id="ep-01"><a class="ep-card__link" href="https://podcasts.apple.com/es/podcast/trucada-del-17-dabril-de-2026-quan-configurar-un/id1883933507?i=1000762279249" target="_blank" rel="noopener noreferrer">Quan configurar un mòbil era divertit (i per què ja no ho és)</a></h3>
               <p class="ep-card__meta"><span>Trucada del 17 d&#x27;abril de 2026</span><span class="ep-card__sep">·</span><span>29 min</span></p>
               <p class="ep-card__desc">Nostàlgia tecnològica, bicicleta elèctrica per Barcelona, la IA al dia a dia i una petita oda a la ineficiència. L&#x27;episodi pilot.</p>
-              <div class="ep-card__tags"><span class="tag">Mòbils</span><span class="tag">Mobilitat</span><span class="tag">IA</span></div>
             </div>
           </article>
         </li>
@@ -161,6 +159,7 @@
   <section class="section" id="qui-som" aria-labelledby="hosts-heading">
     <div class="container">
       <h2 class="section-label" id="hosts-heading">Qui som</h2>
+      <div class="about">
       <p class="hosts__intro">Aquest podcast neix de les típiques converses de FaceTime que s'allarguen més del previst. Cada episodi és com colar-se en una trucada entre amics: informal, curiosa i plena de petites obsessions quotidianes.</p>
       <div class="hosts">
         <div class="host">
@@ -173,6 +172,7 @@
         </div>
       </div>
     </div>
+      </div>
   </section>
 
 </main>
