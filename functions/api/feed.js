@@ -1,18 +1,8 @@
 /**
- * netlify/functions/feed.mjs
- * Proxy RSS → retorna episodis com a JSON
- *
- * URL exposada: /api/feed
- *
- * Configuració (Netlify → Site settings → Environment variables):
- *   PODCAST_RSS_URL = el feed RSS del teu podcast
- *
- * Per trobar el feed RSS:
- *   • Spotify for Creators → Catalog → RSS Distribution
- *   • Apple Podcasts: https://podcasts.apple.com/lookup?id=1883933507 (camp "feedUrl")
- *   • iTunes Lookup API: https://itunes.apple.com/lookup?id=1883933507
+ * functions/api/feed.js — Cloudflare Pages Function
+ * Exposes /api/feed: reads the podcast RSS and returns the episodes as JSON.
+ * Set PODCAST_RSS_URL in Cloudflare → Workers & Pages → femunfacetime → Settings → Variables.
  */
-
 function stripHTML(str) {
   return (str || "")
     .replace(/<[^>]*>/g, "")
@@ -88,35 +78,23 @@ function parseRSS(xml) {
   }).filter(ep => ep.title);
 }
 
-export default async (req) => {
-  const rssUrl = Netlify.env.get("PODCAST_RSS_URL");
-
+export async function onRequest({ env }) {
+  const rssUrl = env.PODCAST_RSS_URL;
   if (!rssUrl) {
-    return Response.json(
-      { error: "PODCAST_RSS_URL no configurada. Afegeix-la a Netlify → Site settings → Environment variables." },
-      { status: 500 }
-    );
+    return Response.json({ error: "PODCAST_RSS_URL not configured" }, { status: 503 });
   }
-
   try {
     const res = await fetch(rssUrl, {
       headers: { "User-Agent": "FemUnFaceTime/1.0" },
+      cf: { cacheTtl: 900, cacheEverything: true },
     });
-
     if (!res.ok) throw new Error(`RSS fetch failed: ${res.status}`);
-
-    const xml  = await res.text();
-    const episodes = parseRSS(xml);
-
+    const episodes = parseRSS(await res.text());
     return Response.json(
       { episodes, updated: new Date().toISOString() },
-      { headers: { "Cache-Control": "public, s-maxage=900, stale-while-revalidate=1800" } }
+      { headers: { "Cache-Control": "public, max-age=900, stale-while-revalidate=1800" } }
     );
   } catch (err) {
-    return Response.json({ error: err.message }, { status: 500 });
+    return Response.json({ error: err.message }, { status: 502 });
   }
-};
-
-export const config = {
-  path: "/api/feed",
-};
+}
