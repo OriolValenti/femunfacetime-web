@@ -1535,3 +1535,7 @@ html, body {
   .listen .listen-btn { min-height: 46px; }
   .listen .listen-btn__icon { width: 34px; height: 34px; }
 }
+
+/* No decorative dashes */
+.hero__eyebrow::before, .section-label::before { display: none; content: none; }
+.hero__eyebrow, .section-label { gap: 0; }

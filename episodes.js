@@ -21,7 +21,7 @@
   // "Trucada del 24 de juliol de 2026 — Les promeses..." → { call, title }
   function splitTitle(full) {
     var parts = String(full || "").split(/\s+[—–-]\s+/);
-    return parts.length > 1 ? { call: parts[0], title: parts.slice(1).join(" — ") } : { call: "", title: full };
+    return parts.length > 1 ? { call: parts[0], title: parts.slice(1).join(", ") } : { call: "", title: full };
   }
 
   function normalize(list) {
