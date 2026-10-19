@@ -1679,7 +1679,7 @@ body {
 
 /* ── Wide hero: text and call side by side on large screens ── */
 @media (min-width: 1024px) {
-  .hero > .container, .nav > .container { max-width: calc(980px + 2 * var(--gap)); }
+  :root { --max-w: calc(980px + 2 * var(--gap)); }
   .hero__inner {
     grid-template-columns: minmax(0, 430px) minmax(0, 1fr);
     gap: clamp(2.5rem, 4vw, 4rem);
