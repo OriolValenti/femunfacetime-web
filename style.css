@@ -677,37 +677,6 @@ a.nav__cta.btn {
   color: inherit;
 }
 
-.ep-card__num {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 2px;
-}
-.ep-card__num-label {
-  font-size: 0.6rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-  line-height: 1;
-  margin-bottom: 2px;
-}
-.ep-card__num-val {
-  font-size: 1.5rem;
-  font-weight: 900;
-  line-height: 1;
-  /* #166A2E on white = 6.3:1 ✓ (also serves as info, not just decoration) */
-  color: var(--green-text);
-  letter-spacing: -0.04em;
-}
-.ep-card__num-line {
-  flex: 1;
-  width: 2px;
-  min-height: 16px;
-  background: var(--border);
-  border-radius: 2px;
-  margin-top: 6px;
-}
 
 .ep-card__body { min-width: 0; }
 .ep-card__title {
@@ -1234,15 +1203,6 @@ html, body {
     gap: 0;
     padding: 1rem 1.125rem;
   }
-  .ep-card__num {
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-  .ep-card__num-line  { display: none; }
-  .ep-card__num-label { margin-bottom: 0; }
-  .ep-card__num-val   { font-size: 1.125rem; }
   .ep-card__actions   { flex-direction: column; gap: 0.5rem; }
   .ep-card__actions .btn { width: 100%; justify-content: center; min-height: 46px; }
 
@@ -1404,4 +1364,43 @@ html, body {
 @media (max-width: 480px) {
   .listen { display: flex; flex-direction: column; align-items: stretch; }
   .listen-badge { justify-content: center; }
+}
+
+/* ── Episode timeline: number + line outside the card ───── */
+.ep-list { gap: 0; }
+.ep-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+.ep-item:last-child { padding-bottom: 0; }
+/* vertical line joining the numbers */
+.ep-item::before {
+  content: "";
+  position: absolute;
+  left: 1.5rem; top: 3.5rem; bottom: .5rem;
+  width: 2px; margin-left: -1px;
+  background: var(--border-2);
+  border-radius: 2px;
+}
+.ep-item:last-child::before { display: none; }
+.ep-item__num {
+  display: flex; flex-direction: column; align-items: center;
+  padding-top: 1.25rem;
+  font-size: 1.5rem; font-weight: 900; line-height: 1;
+  letter-spacing: -.04em; color: var(--green-text);
+}
+.ep-item__num span {
+  font-size: .625rem; font-weight: 800; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--text-muted); margin-bottom: .25rem;
+}
+.ep-item .ep-card { display: block; grid-template-columns: none; min-width: 0; }
+
+@media (max-width: 640px) {
+  .ep-item { grid-template-columns: 2rem 1fr; gap: .625rem; }
+  .ep-item::before { left: 1rem; top: 3rem; }
+  .ep-item__num { font-size: 1.125rem; padding-top: 1.125rem; }
+  .ep-item__num span { font-size: .5625rem; }
 }

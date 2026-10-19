@@ -85,8 +85,8 @@
   }
   function renderList(eps, el) {
     el.innerHTML = eps.map(function (ep) {
-      return '<li><article class="ep-card" aria-labelledby="ep-' + s(ep.num) + '">' +
-        '<div class="ep-card__num" aria-hidden="true"><span class="ep-card__num-label">Ep</span><span class="ep-card__num-val">' + s(ep.num) + '</span><div class="ep-card__num-line"></div></div>' +
+      return '<li class="ep-item"><div class="ep-item__num" aria-hidden="true"><span>Ep</span>' + s(ep.num) + '</div>' +
+        '<article class="ep-card" aria-labelledby="ep-' + s(ep.num) + '">' +
         '<div class="ep-card__body"><h3 class="ep-card__title" id="ep-' + s(ep.num) + '">' + s(ep.title) + '</h3>' +
         '<p class="ep-card__meta">' + meta(ep) + '</p>' +
         '<p class="ep-card__desc">' + s(ep.desc) + '</p>' +
