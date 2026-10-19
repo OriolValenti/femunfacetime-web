@@ -1586,3 +1586,19 @@ html, body {
 .hosts__intro { color: var(--text-2); line-height: 1.7; }
 .host { justify-content: flex-start; }
 .host__role { font-size: .875rem; line-height: 1.45; color: var(--text-muted); margin-top: -.25rem; }
+
+/* ── Qui som v2: intro on top, hosts as horizontal cards below ── */
+.about { display: block; }
+.about .hosts__intro { max-width: 620px; margin: 0 0 1.75rem; }
+.about .hosts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .875rem; max-width: none; }
+.about .host {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center;
+  column-gap: 1.125rem; row-gap: .25rem; text-align: left;
+  padding: 1.125rem 1.25rem;
+}
+.about .host__photo { grid-row: 1 / span 2; width: 72px; height: 72px; }
+.about .host__name { align-self: end; margin: 0; }
+.about .host__role { align-self: start; margin: 0; }
+@media (max-width: 640px) {
+  .about .hosts { grid-template-columns: 1fr; }
+}
