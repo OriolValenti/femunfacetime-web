@@ -1,0 +1,27 @@
+# Netlify _headers — Cache & Security
+
+# HTML: no cache (always fresh)
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Static assets: long cache (filenames don't change)
+/style.css
+  Cache-Control: public, max-age=31536000, immutable
+/script.js
+  Cache-Control: public, max-age=31536000, immutable
+/episodes.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images: 1 year cache
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+# API: short cache, CDN can serve stale while revalidating
+/api/feed
+  Cache-Control: public, max-age=900, stale-while-revalidate=1800
