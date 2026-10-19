@@ -1724,3 +1724,14 @@ html, body {
 @media (prefers-color-scheme: dark) {
   .listen-btn--spotify .listen-btn__icon { background: none; }
 }
+
+/* Apple button: official Podcasts icon, same treatment as Spotify */
+.listen-btn--apple .listen-btn__icon,
+.listen .listen-btn--apple .listen-btn__icon { background: none; width: 32px; height: 32px; }
+@media (prefers-color-scheme: dark) {
+  .listen-btn--apple .listen-btn__icon { background: none; }
+}
+@media (max-width: 374px) {
+  .listen { display: grid; grid-template-columns: 1fr; }
+  .listen .listen-btn { width: 100%; }
+}
