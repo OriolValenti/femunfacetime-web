@@ -225,24 +225,26 @@ ${ldScript({ ...episodeLd(e), partOfSeries: { "@type": "PodcastSeries", name: SE
 </head>
 <body>
 
-${chunks.header}
+${chunks.header.replace(/href="\/#ultim"/g, 'href="#escolta"').replace("Escolta l'últim episodi", "Escolta aquest episodi")}
 
 <main id="main-content">
   <article class="episode">
     <div class="container">
       <a class="episode__back" href="/#episodis"><span aria-hidden="true">←</span> Tots els episodis</a>
-      <p class="episode__eyebrow">Episodi ${e.pad}</p>
+      <p class="episode__eyebrow">Episodi ${e.pad}${e.call ? ` · ${esc(e.call)}` : ""}</p>
       <h1 class="episode__title">${esc(e.title)}</h1>
-      <p class="episode__meta">${[e.call, `Publicat el ${dateCa(e.pub)}`, `${e.min} min`].filter(Boolean).map(esc).join(" · ")}</p>
+      <p class="episode__meta">Publicat el ${esc(dateCa(e.pub))} · ${e.min} min</p>
 
-      <div class="episode__player">
+      <div class="episode__player" id="escolta">
         ${player(e)}
+        <p class="episode__also">També a
+          <a href="${APPLE}" target="_blank" rel="noopener noreferrer">Apple Podcasts</a>
+          <a href="${SPOTIFY}" target="_blank" rel="noopener noreferrer">Spotify</a>
+        </p>
       </div>
 
-      ${chunks.listen}
-
       <section class="episode__notes" aria-labelledby="notes-heading">
-        <h2 class="section-label" id="notes-heading">Notes de l'episodi</h2>
+        <h2 class="episode__notes-title" id="notes-heading">Notes de l'episodi</h2>
         <div class="prose">
 ${e.descHtml}
         </div>

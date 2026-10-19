@@ -1659,3 +1659,31 @@ html, body {
   .ep-nav__item { background: var(--surface-2); }
   .audio audio { color-scheme: dark; }
 }
+
+/* ── Episode page refinements ─────────────────────── */
+.episode { padding: clamp(1.25rem, 4vw, 2.25rem) 0 clamp(2rem, 5vw, 3rem); }
+.episode__back { margin-bottom: 1.5rem; }
+.episode__eyebrow { letter-spacing: .06em; margin-bottom: .625rem; }
+.episode__title { margin-bottom: .5rem; text-wrap: balance; }
+.episode__meta { margin-bottom: 1.75rem; }
+.episode__player { padding: .875rem; margin-bottom: 2.5rem; scroll-margin-top: 5rem; }
+.episode__also {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .375rem .5rem;
+  margin-top: .75rem; padding: 0 .25rem; font-size: .8125rem; color: var(--text-muted);
+}
+.episode__also a {
+  display: inline-flex; align-items: center; padding: .3rem .7rem; border-radius: 999px;
+  border: 1px solid var(--border-2); background: var(--surface); color: var(--text);
+  font-weight: 600; text-decoration: none; transition: border-color var(--ease), background var(--ease);
+}
+.episode__also a:hover { border-color: rgba(17,19,18,.24); background: var(--surface-2); color: var(--text); }
+.episode__notes { border-top: 0; padding-top: 0; }
+.episode__notes-title { font-size: 1.25rem; font-weight: 800; letter-spacing: -.015em; margin-bottom: 1rem; }
+.prose { max-width: 680px; font-size: 1.0625rem; }
+.episode__player { max-width: none; }
+.ep-nav { margin-top: 2.5rem; padding-top: 1.75rem; }
+.ep-nav__dir { text-transform: none; letter-spacing: 0; }
+@media (prefers-color-scheme: dark) {
+  .episode__also a { background: var(--surface-3); }
+  .episode__also a:hover { border-color: rgba(255,255,255,.24); background: var(--surface-3); }
+}
