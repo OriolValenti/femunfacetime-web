@@ -1420,3 +1420,6 @@ html, body {
 }
 .section-label::before { width: 6px; height: 1.1em; border-radius: 3px; background: var(--green); }
 .episodes__count { margin-top: -.75rem; }
+
+.host__name a { color: inherit; text-decoration: underline; text-decoration-color: var(--border-2); text-underline-offset: 3px; }
+.host__name a:hover { color: var(--green-text); text-decoration-color: currentColor; }
