@@ -995,7 +995,7 @@ a.nav__cta.btn {
    layout overflow — clamp it here.
    ============================================= */
 html, body {
-  overflow-x: hidden;
+  overflow-x: clip; /* clip (not hidden) keeps the sticky header working */
   max-width: 100%;
 }
 
@@ -1404,3 +1404,19 @@ html, body {
   .ep-item__num { font-size: 1.125rem; padding-top: 1.125rem; }
   .ep-item__num span { font-size: .5625rem; }
 }
+
+/* ── Section titles: real headings ─────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -.025em;
+  text-transform: none;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+.section-label::before { width: 6px; height: 1.1em; border-radius: 3px; background: var(--green); }
+.episodes__count { margin-top: -.75rem; }
