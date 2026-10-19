@@ -93,3 +93,31 @@
     });
   }
 })();
+
+/* Hero 3D tilt: follows the pointer on devices with a mouse; off for touch and reduced motion */
+(function () {
+  var t = document.querySelector("[data-tilt]");
+  if (!t || !window.matchMedia) return;
+  if (!matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var frame = 0;
+  t.addEventListener("pointermove", function (e) {
+    var r = t.getBoundingClientRect();
+    var x = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
+    var y = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height));
+    cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(function () {
+      t.style.setProperty("--ry", ((x - 0.5) * 14).toFixed(2) + "deg");
+      t.style.setProperty("--rx", ((0.5 - y) * 10).toFixed(2) + "deg");
+      t.style.setProperty("--gx", (x * 100).toFixed(1) + "%");
+      t.style.setProperty("--gy", (y * 100).toFixed(1) + "%");
+      t.classList.add("is-active");
+    });
+  });
+  t.addEventListener("pointerleave", function () {
+    cancelAnimationFrame(frame);
+    t.classList.remove("is-active");
+    t.style.setProperty("--rx", "0deg");
+    t.style.setProperty("--ry", "0deg");
+  });
+})();
