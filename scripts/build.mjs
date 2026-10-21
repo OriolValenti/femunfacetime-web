@@ -218,7 +218,9 @@ function episodePage(e, i, eps, chunks) {
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="${SITE}/og-image.jpg?v=2">
 ${chunks.fonts}
-  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="/style.css">
 ${ldScript({ ...episodeLd(e), partOfSeries: { "@type": "PodcastSeries", name: SERIES.name, url: SERIES.url }, author: PEOPLE })}
